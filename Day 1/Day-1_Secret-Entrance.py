@@ -1,7 +1,8 @@
 inputs = []
 # Obtener los inputs del txt
-with open("Day-1_input.txt", "r", encoding="utf-8") as input:
-    inputs = [line.strip() for line in input]
+fichero = open("Day-1_input.txt", "r",)
+for line in fichero:
+    inputs.append(line.replace("\n",""))
 
 dialPos = 50
 dialRange = 100 # Del 0 al 99

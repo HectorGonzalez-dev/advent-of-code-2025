@@ -1,8 +1,12 @@
 inputs = []
-# Obtener los inputs del txt
-with open("Day-1_input.txt", "r", encoding="utf-8") as input:
-    inputs = [line.strip() for line in input]
 
+# Obtener los inputs del txt
+fichero = open("Day-1_input.txt", "r",)
+for line in fichero:
+    inputs.append(line.replace("\n",""))
+
+print(inputs)
+input("Enter")
 dialPos = 50
 dialMin = 0
 dialMax = 99
@@ -28,4 +32,4 @@ for instruction in inputs:
             if dialPos == 0:
                 zeroCounter = zeroCounter + 1
 
-print("El dial ha pasado",zeroCounter,"veces por el 0")
+print("El dial ha pasado",zeroCounter,"veces en por el 0")
