@@ -28,4 +28,4 @@ for instruction in inputs:
             if dialPos == 0:
                 zeroCounter = zeroCounter + 1
 
-print("El dial ha pasado",zeroCounter,"veces en por el 0")
+print("El dial ha pasado",zeroCounter,"veces por el 0")

@@ -17,4 +17,4 @@ for instruction in inputs:
     if dialPos == 0:
         zeroCounter = zeroCounter + 1
 
-print("El dial ha apuntado",zeroCounter,"veces en el 0")
+print("El dial ha marcado",zeroCounter,"veces el 0")
