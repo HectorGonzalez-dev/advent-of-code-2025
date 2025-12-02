@@ -35,8 +35,26 @@ for i in range(inputString.count(",")):
                     if longitudActual % k == 0:
                         divisores.append(k)
 
+        # Particionamos el numero en todos sus divisores y los metemos a una lista para guardar los fragmentos.
         for divisor in divisores:
-            for k in range(j // divisor):
-                print()
+            numeroFragmentado = []
+            inicio = 0
+            final = 0
+            wrongID = False
+            for k in range(1,(longitudActual // divisor) + 1):
+                if k == 1:
+                    final = divisor
+                else:
+                    inicio = final
+                    final = k * divisor
+                numeroFragmentado.append(actualNumber[inicio:final])
+                if len(numeroFragmentado) > 1:
+                    if not numeroFragmentado[k-2] == numeroFragmentado[k-1]:
+                        break
+                if len(numeroFragmentado) == longitudActual // divisor:
+                    wrongIDSum = wrongIDSum + j
+                    wrongID = True
+            if wrongID:
+                break
 
 print("La suma de todas las IDs erroneas es:",wrongIDSum)
