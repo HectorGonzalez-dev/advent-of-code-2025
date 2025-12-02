@@ -20,23 +20,23 @@ for i in range(inputString.count(",")):
     primerNumero = int(intervalo[:intervalo.find("-")])
     segundoNumero = int(intervalo[intervalo.find("-")+1:])
 
-    # Skipear rangos de longitud impar e igual, porque podria haber alguno de 1-111, y en ese caso si existirían posiblidades.
-    if len(str(primerNumero)) == len(str(segundoNumero)) and not len(str(primerNumero)) % 2 == 0 and not len(str(segundoNumero)) % 2 == 0:
-        continue
-
     # Recorremos el rango
+    longitudActual = 0
+    divisores = []
     for j in range(primerNumero,segundoNumero+1):
         actualNumber = str(j)
-        # Si la longitud del numero es impar, next
-        if not len(actualNumber) % 2 == 0:
-            continue
-        
-        # Fragmentamos el numero por la mitad
-        primeraParte = actualNumber[:len(actualNumber) // 2 ]
-        segundaParte = actualNumber[(len(actualNumber) // 2 ):]
 
-        # Si son iguales bingo
-        if primeraParte == segundaParte:
-            wrongIDSum = wrongIDSum + j
+        # Obtener los divisores de la longitud actual, si es la misma que la anterior no hace falta recalcularlos
+        if not len(actualNumber) == longitudActual:
+            longitudActual = len(actualNumber)
+            divisores = []
+            for k in range(1, longitudActual + 1):
+                if not longitudActual == k: # Exceptuandose a si mismo
+                    if longitudActual % k == 0:
+                        divisores.append(k)
+
+        for divisor in divisores:
+            for k in range(j // divisor):
+                print()
 
 print("La suma de todas las IDs erroneas es:",wrongIDSum)
