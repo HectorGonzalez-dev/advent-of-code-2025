@@ -41,19 +41,23 @@ for i in range(inputString.count(",")):
             inicio = 0
             final = 0
             wrongID = False
+            # Vamos haciendo las particiones calculando las posiciones multiplicando por el diviso
             for k in range(1,(longitudActual // divisor) + 1):
                 if k == 1:
                     final = divisor
                 else:
                     inicio = final
                     final = k * divisor
-                numeroFragmentado.append(actualNumber[inicio:final])
+                numeroFragmentado.append(actualNumber[inicio:final]) # Metemos el fragmento en la lista
+                # Si hay mas de 1 fragmento almacenado, los vamos comparando si es igual al anterior
                 if len(numeroFragmentado) > 1:
                     if not numeroFragmentado[k-2] == numeroFragmentado[k-1]:
-                        break
+                        break # Si no es igual, ya no hace falta revisar el resto, ahorramos comparaciones.
+                # Si hemos llegado al final y no hemos roto el bucle, significa que todos los fragmentos son iguales
                 if len(numeroFragmentado) == longitudActual // divisor:
                     wrongIDSum = wrongIDSum + j
                     wrongID = True
+            # Si hemos visto que el numero ya es valido, pasamos al siguiente para que no se duplique.
             if wrongID:
                 break
 
