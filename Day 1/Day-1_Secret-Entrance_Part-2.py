@@ -1,12 +1,10 @@
 inputs = []
 
 # Obtener los inputs del txt
-fichero = open("Day-1_input.txt", "r",)
+fichero = open("Day-1_input.txt", "r")
 for line in fichero:
     inputs.append(line.replace("\n",""))
 
-print(inputs)
-input("Enter")
 dialPos = 50
 dialMin = 0
 dialMax = 99
