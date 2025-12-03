@@ -7,8 +7,10 @@ for line in fichero:
 dialPos = 50
 dialRange = 100 # Del 0 al 99
 zeroCounter = 0
+iteracionesTotales = 0
 
 for instruction in inputs:
+    iteracionesTotales = iteracionesTotales + 1
     direction = instruction[:1]
     rotation = int(instruction[1:])
     if direction == "L":
@@ -19,3 +21,4 @@ for instruction in inputs:
         zeroCounter = zeroCounter + 1
 
 print("El dial ha marcado",zeroCounter,"veces el 0")
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces (El minimo posible en este caso)")
