@@ -5,6 +5,7 @@ for line in fichero:
     inputs.append(line.replace("\n",""))
 
 totalJoltage = 0
+iteracionesTotales = 0
 
 # Recorremos todas las secuencias
 for sequence in inputs:
@@ -14,6 +15,7 @@ for sequence in inputs:
     digitPosition = 0
     for i in range(len(numberList)): # Buscaremos un valor para cada numero de numberList
         for j in range(digitPosition,len(sequence)-(12-(i+1))): # Start: Posicion del ultimo numero que hemos definido, End: La longitud de la secuencia - los valores restantes que quedan por definir.
+            iteracionesTotales = iteracionesTotales + 1
             if sequence[j] > numberList[i]: # Vamos comparando para obtener el mayor numero
                 numberList[i] = sequence[j]
                 digitPosition = j+1 # Al obtenerlo, le sumamos 1 a la posición para que la próxima iteración empiece desde ahí.
@@ -23,3 +25,4 @@ for sequence in inputs:
     totalJoltage = totalJoltage + int(numeroFinal)
 
 print("El total de Joltage que podemos obtener es:",totalJoltage)
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces")

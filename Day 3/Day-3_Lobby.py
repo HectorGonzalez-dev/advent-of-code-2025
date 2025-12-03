@@ -5,6 +5,7 @@ for line in fichero:
     inputs.append(line.replace("\n",""))
 
 totalJoltage = 0
+iteracionesTotales = 0
 
 # Recorremos todas las secuencias
 for sequence in inputs:
@@ -12,6 +13,7 @@ for sequence in inputs:
     firstNumber = "0"
     secondNumber = "0"
     for i in range(len(sequence)): # Recorremos todos los numeros de la secuencia
+        iteracionesTotales = iteracionesTotales + 1
         if firstNumber == "9" and secondNumber == "9": # Si ambos numeros son 9, ya es el maximo posible. Ahorramos iteraciones.
             break
         if not i == len(sequence) - 1: # Si no estamos en el ultimo numero, comparamos ambos numeros
@@ -27,3 +29,4 @@ for sequence in inputs:
     totalJoltage = totalJoltage + int(firstNumber + secondNumber)
 
 print("El total de Joltage que podemos obtener es:",totalJoltage)
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces")
