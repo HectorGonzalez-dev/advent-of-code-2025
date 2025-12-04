@@ -27,21 +27,22 @@ for i in range(inputString.count(",")):
     if len(str(primerNumero)) == len(str(segundoNumero)) and not len(str(primerNumero)) % 2 == 0 and not len(str(segundoNumero)) % 2 == 0:
         continue
 
-    # Recorremos el rango
-    for j in range(primerNumero,segundoNumero+1):
-        iteracionesTotales = iteracionesTotales + 1
-        actualNumber = str(j)
-        # Si la longitud del numero es impar, next
-        if not len(actualNumber) % 2 == 0:
-            continue
-        
-        # Fragmentamos el numero por la mitad
-        primeraParte = actualNumber[:len(actualNumber) // 2 ]
-        segundaParte = actualNumber[(len(actualNumber) // 2 ):]
+    # Obtenemos la primera mitad del primer numero del rango
+    candidateSlice = ""
+    if not len(str(primerNumero)) % 2 == 0:
+        candidateSlice = ("1" + "0"*len(str(primerNumero)))
+    else:
+        candidateSlice = str(primerNumero)[:len(str(primerNumero))]
+    candidateSlice = candidateSlice[:len(candidateSlice) // 2]
 
-        # Si son iguales bingo
-        if primeraParte == segundaParte:
-            wrongIDSum = wrongIDSum + j
+    # Analizamos los posibles candidatos de cada rango en vez de recorrer todos los numeros.
+    candidate = 0
+    while candidate <= segundoNumero:
+        iteracionesTotales = iteracionesTotales + 1
+        candidate = int(candidateSlice*2)
+        if candidate <= segundoNumero and candidate >= primerNumero:
+            wrongIDSum = wrongIDSum + candidate
+        candidateSlice = str(int(candidateSlice) + 1)
 
 print("La suma de todas las IDs erroneas es:",wrongIDSum)
-print("Para obtener este resultado se han iterado",iteracionesTotales,"veces")
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # Record actual: 873
