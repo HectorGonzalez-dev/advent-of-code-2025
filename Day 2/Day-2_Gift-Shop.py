@@ -7,7 +7,10 @@ end = 0
 
 wrongIDSum = 0
 
+iteracionesTotales = 0
+
 for i in range(inputString.count(",")):
+    iteracionesTotales = iteracionesTotales + 1
     # Encontrar los intervalos
     if i == 0:
         end = inputString.find(",")
@@ -26,6 +29,7 @@ for i in range(inputString.count(",")):
 
     # Recorremos el rango
     for j in range(primerNumero,segundoNumero+1):
+        iteracionesTotales = iteracionesTotales + 1
         actualNumber = str(j)
         # Si la longitud del numero es impar, next
         if not len(actualNumber) % 2 == 0:
@@ -40,3 +44,4 @@ for i in range(inputString.count(",")):
             wrongIDSum = wrongIDSum + j
 
 print("La suma de todas las IDs erroneas es:",wrongIDSum)
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces")
