@@ -15,8 +15,12 @@ for fila in range(len(inputs)):
         # Recorremos los numeros circundantes de nuestra posicion actual.
         for desplazamiento_fila in range(-1,2):
             iteracionesTotales = iteracionesTotales + 1
+            if surroundingRolls >= 4:
+                break
             for desplazamiento_columna in range(-1,2):
                 iteracionesTotales = iteracionesTotales + 1
+                if surroundingRolls >= 4:
+                    break
                 # Calculamos la posicion de los vecinos, tu posición actual + el "offset", que es con lo que recorremos los numeros circundantes.
                 fila_vecina = fila + desplazamiento_fila
                 columna_vecina = columna + desplazamiento_columna
@@ -31,4 +35,4 @@ for fila in range(len(inputs)):
             accessibleRolls = accessibleRolls + 1
 
 print("Hay un total de",accessibleRolls,"rollos de papel accesibles")
-print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 244.134
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 213.718
