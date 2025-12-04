@@ -1,0 +1,34 @@
+inputs = []
+# Obtener los inputs del txt
+fichero = open("Day-4_input.txt", "r")
+for line in fichero:
+    inputs.append(line.replace("\n",""))
+
+accessibleRolls = 0
+iteracionesTotales = 0
+
+for fila in range(len(inputs)):
+    iteracionesTotales = iteracionesTotales + 1
+    for columna in range(len(inputs[fila])):
+        iteracionesTotales = iteracionesTotales + 1
+        surroundingRolls = 0
+        # Recorremos los numeros circundantes de nuestra posicion actual.
+        for desplazamiento_fila in range(-1,2):
+            iteracionesTotales = iteracionesTotales + 1
+            for desplazamiento_columna in range(-1,2):
+                iteracionesTotales = iteracionesTotales + 1
+                # Calculamos la posicion de los vecinos, tu posición actual + el "offset", que es con lo que recorremos los numeros circundantes.
+                fila_vecina = fila + desplazamiento_fila
+                columna_vecina = columna + desplazamiento_columna
+                # Si nuestra posición actual es la misma que la del offset pasamos.
+                if fila_vecina == fila and columna_vecina == columna:
+                    continue
+                # Aseguramos que nuestra posición no esta fuera de los límites de la matriz.
+                elif 0 <= fila_vecina < (len(inputs)) and 0 <= columna_vecina < (len(inputs[fila])):
+                    if inputs[fila_vecina][columna_vecina] == "@":
+                        surroundingRolls = surroundingRolls + 1
+        if surroundingRolls < 4 and inputs[fila][columna] == "@":
+            accessibleRolls = accessibleRolls + 1
+
+print("Hay un total de",accessibleRolls,"rollos de papel accesibles")
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 244.134
