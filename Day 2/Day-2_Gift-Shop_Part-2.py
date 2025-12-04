@@ -7,7 +7,10 @@ end = 0
 
 wrongIDSum = 0
 
+iteracionesTotales = 0
+
 for i in range(inputString.count(",")):
+    iteracionesTotales = iteracionesTotales + 1
     # Encontrar los intervalos
     if i == 0:
         end = inputString.find(",")
@@ -24,6 +27,7 @@ for i in range(inputString.count(",")):
     longitudActual = 0
     divisores = []
     for j in range(primerNumero,segundoNumero+1):
+        iteracionesTotales = iteracionesTotales + 1
         actualNumber = str(j)
 
         # Obtener los divisores de la longitud actual, si es la misma que la anterior no hace falta recalcularlos
@@ -31,18 +35,21 @@ for i in range(inputString.count(",")):
             longitudActual = len(actualNumber)
             divisores = []
             for k in range(1, longitudActual + 1):
+                iteracionesTotales = iteracionesTotales + 1
                 if not longitudActual == k: # Exceptuandose a si mismo
                     if longitudActual % k == 0:
                         divisores.append(k)
 
         # Particionamos el numero en todos sus divisores y los metemos a una lista para guardar los fragmentos.
         for divisor in divisores:
+            iteracionesTotales = iteracionesTotales + 1
             numeroFragmentado = []
             inicio = 0
             final = 0
             wrongID = False
             # Vamos haciendo las particiones calculando las posiciones multiplicando por el diviso
             for k in range(1,(longitudActual // divisor) + 1):
+                iteracionesTotales = iteracionesTotales + 1
                 if k == 1:
                     final = divisor
                 else:
@@ -62,3 +69,6 @@ for i in range(inputString.count(",")):
                 break
 
 print("La suma de todas las IDs erroneas es:",wrongIDSum)
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 19.417.588
+
+# Resultado 37432260594

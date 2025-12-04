@@ -9,6 +9,7 @@ eliminacionesRonda = 1
 iteracionesTotales = 0
 
 while eliminacionesRonda > 0:
+    iteracionesTotales = iteracionesTotales + 1
     eliminacionesRonda = 0
     for fila in range(len(inputs)):
         iteracionesTotales = iteracionesTotales + 1
