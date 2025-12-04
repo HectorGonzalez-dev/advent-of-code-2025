@@ -5,7 +5,7 @@ for line in fichero:
     inputs.append(line.replace("\n",""))
 
 eliminacionesTotales = 0
-eliminacionesRonda = 0
+eliminacionesRonda = 1
 iteracionesTotales = 0
 
 while eliminacionesRonda > 0:
@@ -40,4 +40,4 @@ while eliminacionesRonda > 0:
                 eliminacionesRonda = eliminacionesRonda + 1
 
 print("Se pueden eliminar un total de",eliminacionesTotales,"rollos de papel")
-print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 213.718
+print("Para obtener este resultado se han iterado",iteracionesTotales,"veces") # 10.553.167
